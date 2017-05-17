@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SP_MVC.Material>
+
+@{
+    ViewBag.Title = "MaterialsList";
+}
+
+<h2>MaterialsList</h2>
+
+<h2>Список материалов</h2>
+<table>
+    <tr align="center">
+        <td>Код материала</td>
+        <td>Сортамент</td>
+        <td>Название</td>
+        <td>Марка</td>
+        <td>Обозначение стандарта</td>
+    </tr>
+    @foreach (SP_MVC.Material temp in Model)
+    {
+        <tr align="center">
+            <td>@temp.MaterialId</td>
+            <td>@temp.Assortment</td>
+            <td>@temp.Name</td>
+            <td>@temp.Stamp</td>
+            <td>@temp.DesignOfStandard</td>
+            <td>@Html.ActionLink("Удалить", "DeleteMaterial", temp, null)</td>
+        </tr>
+    }
+</table>
+
