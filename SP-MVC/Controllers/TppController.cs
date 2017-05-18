@@ -24,15 +24,33 @@ namespace SP_MVC.Controllers
             return View(temp);
         }
 
-        [HttpPost]
+        
         public ActionResult DeleteMaterial(Material material)
         {
             TppContext db = new TppContext();
             db.Material.Attach(material);
-            db.Entry(material).State = System.Data.Entity.EntityState.Deleted;
+            //db.Entry(material).State = System.Data.Entity.EntityState.Deleted;
+            db.Material.Remove(material);
             db.SaveChanges();
             IEnumerable<Material> temp = db.Material;
-            return View("MaterialList",temp);
+            return View("MaterialsList",temp);
+        }
+
+        [HttpGet]
+        public ActionResult AddMaterial()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddMaterial(Material material)
+        {
+            TppContext db = new TppContext();
+            db.Material.Add(material);
+            db.SaveChanges();
+
+            IEnumerable<Material> temp = db.Material;
+            return View("MaterialsList", temp);
         }
 
     }

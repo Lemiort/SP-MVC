@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<SP_MVC.Material>
-
 @{
     ViewBag.Title = "MaterialsList";
 }
@@ -23,8 +22,13 @@
             <td>@temp.Name</td>
             <td>@temp.Stamp</td>
             <td>@temp.DesignOfStandard</td>
-            <td>@Html.ActionLink("Удалить", "DeleteMaterial", temp, null)</td>
+ <!---          <td>@Html.ActionLink("Удалить", "DeleteMaterial", temp, null)</td>     -->  
+@using (Html.BeginForm("DeleteMaterial", "Tpp", temp))
+{
+
+            <td><input type="submit" value="Удалить" class="btn btn-default" /></td>       
+}
         </tr>
     }
 </table>
-
+@{Html.RenderPartial("AddMaterial",new SP_MVC.Material());}
