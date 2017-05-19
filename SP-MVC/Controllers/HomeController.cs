@@ -10,7 +10,7 @@ namespace SP_MVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Tpp");
         }
 
         public ActionResult About()

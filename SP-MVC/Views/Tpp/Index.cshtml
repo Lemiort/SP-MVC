@@ -3,16 +3,18 @@
     ViewBag.Title = "Tpp";
 }
 
+<h2>All lists</h2>
 
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div>
-        @Html.ActionLink("Материалы", "MaterialsList")
-    </div>
-</body>
-</html>
+<table class="table">
+    <tr>
+        <td>
+            @Html.ActionLink("Материалы", "MaterialsList")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Equipment", "EquipmentList")
+        </td>
+    </tr>
+</table>

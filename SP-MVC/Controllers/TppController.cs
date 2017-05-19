@@ -20,38 +20,53 @@ namespace SP_MVC.Controllers
         public ActionResult MaterialsList()
         {
             TppContext db = new TppContext();
-            IEnumerable<Material> temp = db.Material;
-            return View(temp);
+            IEnumerable<Material> model = db.Material;
+            return View(model);
         }
-
         
-        public ActionResult DeleteMaterial(Material material)
+        public ActionResult DeleteMaterial(int id)
         {
             TppContext db = new TppContext();
-            db.Material.Attach(material);
-            //db.Entry(material).State = System.Data.Entity.EntityState.Deleted;
-            db.Material.Remove(material);
+            db.Material.Remove(db.Material.Find(id));
             db.SaveChanges();
-            IEnumerable<Material> temp = db.Material;
-            return View("MaterialsList",temp);
+            /*IEnumerable<Material> temp = db.Material;
+            return View("MaterialsList",temp);*/
+            return RedirectToAction("MaterialsList");
         }
 
-        [HttpGet]
-        public ActionResult AddMaterial()
-        {
-            return View();
-        }
-
-        [HttpPost]
         public ActionResult AddMaterial(Material material)
         {
             TppContext db = new TppContext();
             db.Material.Add(material);
             db.SaveChanges();
 
-            IEnumerable<Material> temp = db.Material;
-            return View("MaterialsList", temp);
+            /*IEnumerable<Material> temp = db.Material;
+            return View("MaterialsList", temp);*/
+            return RedirectToAction("MaterialsList");
         }
 
+        public ActionResult EquipmentList()
+        {
+            TppContext db = new TppContext();
+            IEnumerable<Equipment> model = db.Equipment;
+            return View(model);
+        }
+
+        
+        public ActionResult DeleteEquipment(int id)
+        {
+            TppContext db = new TppContext();
+            db.Equipment.Remove(db.Equipment.Find(id));
+            db.SaveChanges();
+            return RedirectToAction("EquipmentList");
+        }
+
+        public ActionResult AddEquipment(Equipment equipment)
+        {
+            TppContext db = new TppContext();
+            db.Equipment.Add(equipment);
+            db.SaveChanges();
+            return RedirectToAction("EquipmentList");
+        }
     }
 }

@@ -1,34 +1,48 @@
 ﻿@model IEnumerable<SP_MVC.Material>
+
 @{
-    ViewBag.Title = "MaterialsList";
+    ViewBag.Title = "MaterialsList2";
 }
 
-<h2>MaterialsList</h2>
+<h2>MaterialsList2</h2>
 
-<h2>Список материалов</h2>
-<table>
-    <tr align="center">
-        <td>Код материала</td>
-        <td>Сортамент</td>
-        <td>Название</td>
-        <td>Марка</td>
-        <td>Обозначение стандарта</td>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Assortment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesignOfStandard)
+        </th>
+        <th></th>
     </tr>
-    @foreach (SP_MVC.Material temp in Model)
-    {
-        <tr align="center">
-            <td>@temp.MaterialId</td>
-            <td>@temp.Assortment</td>
-            <td>@temp.Name</td>
-            <td>@temp.Stamp</td>
-            <td>@temp.DesignOfStandard</td>
- <!---          <td>@Html.ActionLink("Удалить", "DeleteMaterial", temp, null)</td>     -->  
-@using (Html.BeginForm("DeleteMaterial", "Tpp", temp))
-{
 
-            <td><input type="submit" value="Удалить" class="btn btn-default" /></td>       
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assortment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesignOfStandard)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteMaterial", new { id=item.MaterialId })
+        </td>
+    </tr>
 }
-        </tr>
-    }
+
 </table>
-@{Html.RenderPartial("AddMaterial",new SP_MVC.Material());}
+
+@{Html.RenderPartial("AddMaterial", new SP_MVC.Material());}

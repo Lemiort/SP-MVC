@@ -1,22 +1,25 @@
-﻿@model SP_MVC.Material
+﻿@model SP_MVC.Equipment
 
 @{
-    ViewBag.Title = "AddMaterial";
+    ViewBag.Title = "AddEquipment";
 }
 
-@using (Html.BeginForm("AddMaterial","Tpp",FormMethod.Post)) 
+<h2>AddEquipment</h2>
+
+
+@using (Html.BeginForm("AddEquipment", "Tpp", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Material</h4>
+        <h4>Equipment</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Assortment, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DetailNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Assortment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Assortment, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.DetailNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DetailNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -29,18 +32,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Stamp, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Stamp, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Stamp, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DesignOfStandard, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DesignOfStandard, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DesignOfStandard, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -51,6 +54,7 @@
         </div>
     </div>
 }
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
