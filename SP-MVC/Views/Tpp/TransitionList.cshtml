@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SP_MVC.Transition>
+
+@{
+    ViewBag.Title = "TransitionList";
+}
+
+<h2>TransitionList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransitionNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransitionType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransitionNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keyword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransitionType)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteTransition", new { id=item.TransitionId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@{Html.RenderPartial("AddTransition", new SP_MVC.Transition());}

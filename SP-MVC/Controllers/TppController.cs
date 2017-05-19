@@ -91,5 +91,28 @@ namespace SP_MVC.Controllers
             db.SaveChanges();
             return RedirectToAction("RiggingList");
         }
+
+        public ActionResult TransitionList()
+        {
+            TppContext db = new TppContext();
+            IEnumerable<Transition> model = db.Transition;
+            return View(model);
+        }
+
+        public ActionResult DeleteTransition(int id)
+        {
+            TppContext db = new TppContext();
+            db.Transition.Remove(db.Transition.Find(id));
+            db.SaveChanges();
+            return RedirectToAction("TransitionList");
+        }
+
+        public ActionResult AddTransition(Transition transition)
+        {
+            TppContext db = new TppContext();
+            db.Transition.Add(transition);
+            db.SaveChanges();
+            return RedirectToAction("TransitionList");
+        }
     }
 }
