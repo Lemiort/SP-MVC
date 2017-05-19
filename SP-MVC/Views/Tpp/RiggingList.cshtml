@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SP_MVC.Rigging>
+
+@{
+    ViewBag.Title = "RiggingList";
+}
+
+<h2>RiggingList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfTool)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeOfTool)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteRigging", new { id=item.RiggingId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@{Html.RenderPartial("AddRigging", new SP_MVC.Rigging());}

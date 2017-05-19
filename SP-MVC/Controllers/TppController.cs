@@ -68,5 +68,28 @@ namespace SP_MVC.Controllers
             db.SaveChanges();
             return RedirectToAction("EquipmentList");
         }
+
+        public ActionResult RiggingList()
+        {
+            TppContext db = new TppContext();
+            IEnumerable<Rigging> model = db.Rigging;
+            return View(model);
+        }
+
+        public ActionResult DeleteRigging(int id)
+        {
+            TppContext db = new TppContext();
+            db.Rigging.Remove(db.Rigging.Find(id));
+            db.SaveChanges();
+            return RedirectToAction("RiggingList");
+        }
+
+        public ActionResult AddRigging(Rigging rigging)
+        {
+            TppContext db = new TppContext();
+            db.Rigging.Add(rigging);
+            db.SaveChanges();
+            return RedirectToAction("RiggingList");
+        }
     }
 }

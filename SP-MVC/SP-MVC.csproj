@@ -215,6 +215,8 @@
     <Content Include="Views\Tpp\EquipmentList.cshtml" />
     <Content Include="Views\Tpp\MaterialsList.cshtml" />
     <Content Include="Views\Tpp\AddEquipment.cshtml" />
+    <Content Include="Views\Tpp\RiggingList.cshtml" />
+    <Content Include="Views\Tpp\AddRigging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
