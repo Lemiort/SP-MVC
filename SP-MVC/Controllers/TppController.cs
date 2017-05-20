@@ -1,4 +1,5 @@
-﻿using SP_MVC.Models;
+﻿using ClosedXML.Excel;
+using SP_MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -247,6 +248,28 @@ namespace SP_MVC.Controllers
             db.RouteCar.Add(model.rc);
             db.SaveChanges();
             return RedirectToAction("RouteCardList");
+        }
+
+        public ActionResult DownloadRouteCard(int id)
+        {
+            var document = new XLWorkbook("C:\\Users\\Администратор.WIN-RNRNP8DOVU8\\Documents\\MK_-pustoy_shablon.xlsx");
+            document.SaveAs("mk.xlsx");
+
+            string filename = "mk.xlsx";
+            //string filepath = AppDomain.CurrentDomain.BaseDirectory + "/Path/To/File/" + filename;
+            string filepath = filename;
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+            string contentType = MimeMapping.GetMimeMapping(filepath);
+
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+                FileName = filename,
+                Inline = true,
+            };
+
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+
+            return File(filedata, contentType);
         }
     }
 }
