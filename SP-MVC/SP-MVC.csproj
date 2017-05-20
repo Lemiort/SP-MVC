@@ -163,6 +163,7 @@
     <Compile Include="Models\ModelToData\Material.cs" />
     <Compile Include="Models\ModelToData\TppContext.cs" />
     <Compile Include="Models\ModelToData\Operation.cs" />
+    <Compile Include="Models\OperationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ModelToData\Rigging.cs" />
     <Compile Include="Models\ModelToData\Route.cs" />
@@ -219,6 +220,8 @@
     <Content Include="Views\Tpp\AddRigging.cshtml" />
     <Content Include="Views\Tpp\TransitionList.cshtml" />
     <Content Include="Views\Tpp\AddTransition.cshtml" />
+    <Content Include="Views\Tpp\AddOperation.cshtml" />
+    <Content Include="Views\Tpp\OperationList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

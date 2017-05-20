@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SP_MVC.Operation>
+
+@{
+    ViewBag.Title = "OperaionList";
+}
+
+<h2>OperaionList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rigging.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transition.Keyword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransitionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkplaceNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rigging.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transition.Keyword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransitionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkplaceNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteOperation", new { id=item.OperationId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@{Html.RenderPartial("AddOperation", new SP_MVC.Models.OperationViewModel());}

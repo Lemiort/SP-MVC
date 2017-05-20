@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SP_MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -113,6 +114,43 @@ namespace SP_MVC.Controllers
             db.Transition.Add(transition);
             db.SaveChanges();
             return RedirectToAction("TransitionList");
+        }
+
+        public ActionResult OperationList()
+        {
+            TppContext db = new TppContext();
+            IEnumerable<Operation> model = db.Operation;
+            return View(model);
+        }
+
+        public ActionResult DeleteOperation(int id)
+        {
+            TppContext db = new TppContext();
+            db.Operation.Remove(db.Operation.Find(id));
+            db.SaveChanges();
+            return RedirectToAction("OperationList");
+        }
+
+        /*[HttpGet]
+        public ActionResult AddOperation()
+        {
+            OperationViewModel model = new OperationViewModel();
+            return View(model);
+        }*/
+
+        [HttpPost]
+        public ActionResult AddOperation(OperationViewModel model)
+        {
+            TppContext db = new TppContext();
+            Transition trans = db.Transition.Find(model.operation.TransitionId);
+            model.operation.Transition = trans;
+            Equipment eq = db.Equipment.Find(model.operation.EquipmentId);
+            model.operation.Equipment = eq;
+            Rigging rig = db.Rigging.Find(model.operation.RiggingId);
+            model.operation.Rigging = rig;
+            db.Operation.Add(model.operation);
+            db.SaveChanges();
+            return RedirectToAction("OperationList");
         }
     }
 }
