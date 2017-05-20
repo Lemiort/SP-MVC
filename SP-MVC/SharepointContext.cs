@@ -12,6 +12,28 @@ namespace SP_MVC
         ClientContext _context = new ClientContext(__sharepointUrl);
         static string __sharepointUrl => ConfigurationManager.AppSettings["SharepointUrl"];
 
+        /*Web web = clientContext.Web;
+        List siteUserInfoList = web.SiteUserInfoList;
+        CamlQuery query = new CamlQuery();
+        query.ViewXml = "";
+                IEnumerable<ListItem> itemColl = clientContext.LoadQuery(siteUserInfoList.GetItems(query));
+        clientContext.ExecuteQuery();
+                foreach (var item in itemColl)
+                {
+                    Console.WriteLine("ID:{0}  Email:{1} Title:{2}",item.Id,item["EMail"],item["Title"]);
+                }*/
+
+    public IEnumerable<ListItem> GetUserCollection()
+        {
+            List siteUserInfoList = _context.Web.SiteUserInfoList;
+            CamlQuery query = new CamlQuery();
+            query.ViewXml = "";
+            IEnumerable<ListItem> itemColl = _context.LoadQuery(siteUserInfoList.GetItems(query));
+            _context.ExecuteQuery();
+
+            return itemColl;
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // Для определения избыточных вызовов
 

@@ -164,6 +164,7 @@
     <Compile Include="Models\ModelToData\TppContext.cs" />
     <Compile Include="Models\ModelToData\Operation.cs" />
     <Compile Include="Models\OperationViewModel.cs" />
+    <Compile Include="Models\RouteViewModel.cs" />
     <Compile Include="Models\TechnologicalProcessesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ModelToData\Rigging.cs" />
@@ -225,6 +226,9 @@
     <Content Include="Views\Tpp\OperationList.cshtml" />
     <Content Include="Views\Tpp\TechnologicalProcessesList.cshtml" />
     <Content Include="Views\Tpp\AddTechnologicalProcesses.cshtml" />
+    <Content Include="Views\Tpp\RouteCardList.cshtml" />
+    <Content Include="Views\Tpp\RouteList.cshtml" />
+    <Content Include="Views\Tpp\AddRoute.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

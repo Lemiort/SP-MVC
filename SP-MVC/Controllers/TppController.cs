@@ -181,5 +181,46 @@ namespace SP_MVC.Controllers
             db.SaveChanges();
             return RedirectToAction("TechnologicalProcessesList");
         }
+
+        public ActionResult RouteList()
+        {
+            TppContext db = new TppContext();
+            IEnumerable<Route> model = db.Route;
+            return View(model);
+        }
+
+        public ActionResult DeleteRoute(int id)
+        {
+            TppContext db = new TppContext();
+            db.Route.Remove(db.Route.Find(id));
+            db.SaveChanges();
+            return RedirectToAction("RouteList");
+        }
+
+        [HttpPost]
+        public ActionResult AddRoute(RouteViewModel model)
+        {
+            TppContext db = new TppContext();
+            TechnologicalProcesses tp = db.TechnologicalProcesses.Find(model.route.TechProcId);
+            model.route.TechnologicalProcesses = tp;
+            db.Route.Add(model.route);
+            db.SaveChanges();
+            return RedirectToAction("RouteList");
+        }
+
+        public ActionResult RouteCardList()
+        {
+            TppContext db = new TppContext();
+            IEnumerable<RouteCar> model = db.RouteCar;
+            return View(model);
+        }
+
+        public ActionResult DeleteRouteCard(int id)
+        {
+            TppContext db = new TppContext();
+            db.RouteCar.Remove(db.RouteCar.Find(id));
+            db.SaveChanges();
+            return RedirectToAction("RouteCardList");
+        }
     }
 }

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SP_MVC.Route>
+
+@{
+    ViewBag.Title = "RouteList";
+}
+
+<h2>RouteList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TechnologicalProcesses.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameTechProc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameOfDeveloper)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DetailsDesignation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DetailsName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TechnologicalProcesses.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameTechProc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameOfDeveloper)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetailsDesignation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetailsName)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteRoute", new { id=item.RouteId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@{Html.RenderPartial("AddRoute", new SP_MVC.Models.RouteViewModel());}
