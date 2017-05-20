@@ -1,0 +1,88 @@
+﻿@model SP_MVC.Models.RouteCardViewModel
+
+@{
+    ViewBag.Title = "AddRouteCard";
+}
+
+<h2>AddRouteCard</h2>
+
+
+@using (Html.BeginForm("AddRouteCard", "Tpp", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>RouteCar</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.rc.RouteId, "RouteId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.rc.RouteId, Model.routesList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.rc.RouteId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rc.CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.rc.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.rc.CompanyName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rc.Developer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.rc.Developer, Model.usersList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.rc.Developer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rc.Checked, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.rc.Checked, Model.usersList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.rc.Checked, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rc.Agreed, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.rc.Agreed, Model.usersList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.rc.Agreed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rc.Approved, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.rc.Approved, Model.usersList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.rc.Approved, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rc.NormСontroller, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.rc.NormСontroller, Model.usersList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.rc.NormСontroller, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

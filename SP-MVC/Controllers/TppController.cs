@@ -222,5 +222,26 @@ namespace SP_MVC.Controllers
             db.SaveChanges();
             return RedirectToAction("RouteCardList");
         }
+
+        /*[HttpGet]
+        public ActionResult AddRouteCard()
+        {
+            RouteCardViewModel model = new RouteCardViewModel();
+            return View(model);
+        }*/
+
+        [HttpPost]
+        public ActionResult AddRouteCard(RouteCardViewModel model)
+        {
+            TppContext db = new TppContext();
+            Route route = db.Route.Find(model.rc.RouteId);
+            model.rc.Route = route;
+
+            //users dont should be converted to objects
+
+            db.RouteCar.Add(model.rc);
+            db.SaveChanges();
+            return RedirectToAction("RouteCardList");
+        }
     }
 }
