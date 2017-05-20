@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SP_MVC.Models.ModelToData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,17 +9,17 @@ namespace SP_MVC.Models
 {
     public class TechnologicalProcessesViewModel
     {
-        public TechnologicalProcesses tp { get; set; }
+        public TechnologicalProcess tp { get; set; }
         public IEnumerable<SelectListItem> materialList { get; set; }
         public IEnumerable<SelectListItem> operationList { get; set; }
 
         public TechnologicalProcessesViewModel()
         {
-            tp = new TechnologicalProcesses();
+            tp = new TechnologicalProcess();
 
             TppContext bd = new TppContext();
             List<SelectListItem> temp = new List<SelectListItem>();
-            foreach (var mat in bd.Material)
+            foreach (var mat in bd.Materials)
             {
                 temp.Add(new SelectListItem()
                 {
@@ -28,7 +29,7 @@ namespace SP_MVC.Models
             }
             materialList = temp;
             temp = new List<SelectListItem>();
-            foreach (var oper in bd.Operation)
+            foreach (var oper in bd.Operations)
             {
                 temp.Add(new SelectListItem()
                 {

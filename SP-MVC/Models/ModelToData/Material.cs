@@ -1,4 +1,4 @@
-namespace SP_MVC
+namespace SP_MVC.Models.ModelToData
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace SP_MVC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Material()
         {
-            TechnologicalProcesses = new HashSet<TechnologicalProcesses>();
+            TechnologicalProcesses = new HashSet<TechnologicalProcess>();
         }
 
         public int MaterialId { get; set; }
@@ -26,6 +26,6 @@ namespace SP_MVC
         public string DesignOfStandard { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TechnologicalProcesses> TechnologicalProcesses { get; set; }
+        public virtual ICollection<TechnologicalProcess> TechnologicalProcesses { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace SP_MVC
+namespace SP_MVC.Models.ModelToData
 {
     using System;
     using System.Collections.Generic;

@@ -162,25 +162,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TppController.cs" />
-    <Compile Include="Models\ModelToData\C__MigrationHistory.cs" />
-    <Compile Include="Models\ModelToData\Equipment.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelToData\C__MigrationHistory.cs" />
+    <Compile Include="Models\ModelToData\Equipment.cs" />
     <Compile Include="Models\ModelToData\Material.cs" />
-    <Compile Include="Models\ModelToData\TppContext.cs" />
     <Compile Include="Models\ModelToData\Operation.cs" />
+    <Compile Include="Models\ModelToData\Rigging.cs" />
+    <Compile Include="Models\ModelToData\Route.cs" />
+    <Compile Include="Models\ModelToData\RouteCar.cs" />
+    <Compile Include="Models\ModelToData\TechnologicalProcess.cs" />
+    <Compile Include="Models\ModelToData\Tpp.cs" />
+    <Compile Include="Models\ModelToData\Transition.cs" />
     <Compile Include="Models\OperationViewModel.cs" />
     <Compile Include="Models\RouteCardViewModel.cs" />
     <Compile Include="Models\RouteViewModel.cs" />
     <Compile Include="Models\TechnologicalProcessesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\ModelToData\Rigging.cs" />
-    <Compile Include="Models\ModelToData\Route.cs" />
-    <Compile Include="Models\ModelToData\RouteCar.cs" />
     <Compile Include="SharepointContext.cs" />
-    <Compile Include="Models\ModelToData\TechnologicalProcesses.cs" />
-    <Compile Include="Models\ModelToData\Transition.cs" />
     <Compile Include="Models\RouteCarTableViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

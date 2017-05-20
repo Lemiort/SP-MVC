@@ -1,5 +1,6 @@
 ﻿using ClosedXML.Excel;
 using SP_MVC.Models;
+using SP_MVC.Models.ModelToData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace SP_MVC.Controllers
         public ActionResult Index()
         {
             TppContext context = new TppContext();
-            ViewBag.SomeInfo = context.Material.Count();
+            ViewBag.SomeInfo = context.Materials.Count();
             return View();
         }
 
@@ -22,14 +23,14 @@ namespace SP_MVC.Controllers
         public ActionResult MaterialsList()
         {
             TppContext db = new TppContext();
-            IEnumerable<Material> model = db.Material;
+            IEnumerable<Material> model = db.Materials;
             return View(model);
         }
         
         public ActionResult DeleteMaterial(int id)
         {
             TppContext db = new TppContext();
-            db.Material.Remove(db.Material.Find(id));
+            db.Materials.Remove(db.Materials.Find(id));
             db.SaveChanges();
             /*IEnumerable<Material> temp = db.Material;
             return View("MaterialsList",temp);*/
@@ -39,7 +40,7 @@ namespace SP_MVC.Controllers
         public ActionResult AddMaterial(Material material)
         {
             TppContext db = new TppContext();
-            db.Material.Add(material);
+            db.Materials.Add(material);
             db.SaveChanges();
 
             /*IEnumerable<Material> temp = db.Material;
@@ -50,7 +51,7 @@ namespace SP_MVC.Controllers
         public ActionResult EquipmentList()
         {
             TppContext db = new TppContext();
-            IEnumerable<Equipment> model = db.Equipment;
+            IEnumerable<Equipment> model = db.Equipments;
             return View(model);
         }
 
@@ -58,7 +59,7 @@ namespace SP_MVC.Controllers
         public ActionResult DeleteEquipment(int id)
         {
             TppContext db = new TppContext();
-            db.Equipment.Remove(db.Equipment.Find(id));
+            db.Equipments.Remove(db.Equipments.Find(id));
             db.SaveChanges();
             return RedirectToAction("EquipmentList");
         }
@@ -66,7 +67,7 @@ namespace SP_MVC.Controllers
         public ActionResult AddEquipment(Equipment equipment)
         {
             TppContext db = new TppContext();
-            db.Equipment.Add(equipment);
+            db.Equipments.Add(equipment);
             db.SaveChanges();
             return RedirectToAction("EquipmentList");
         }
@@ -74,14 +75,14 @@ namespace SP_MVC.Controllers
         public ActionResult RiggingList()
         {
             TppContext db = new TppContext();
-            IEnumerable<Rigging> model = db.Rigging;
+            IEnumerable<Rigging> model = db.Riggings;
             return View(model);
         }
 
         public ActionResult DeleteRigging(int id)
         {
             TppContext db = new TppContext();
-            db.Rigging.Remove(db.Rigging.Find(id));
+            db.Riggings.Remove(db.Riggings.Find(id));
             db.SaveChanges();
             return RedirectToAction("RiggingList");
         }
@@ -89,7 +90,7 @@ namespace SP_MVC.Controllers
         public ActionResult AddRigging(Rigging rigging)
         {
             TppContext db = new TppContext();
-            db.Rigging.Add(rigging);
+            db.Riggings.Add(rigging);
             db.SaveChanges();
             return RedirectToAction("RiggingList");
         }
@@ -97,14 +98,14 @@ namespace SP_MVC.Controllers
         public ActionResult TransitionList()
         {
             TppContext db = new TppContext();
-            IEnumerable<Transition> model = db.Transition;
+            IEnumerable<Transition> model = db.Transitions;
             return View(model);
         }
 
         public ActionResult DeleteTransition(int id)
         {
             TppContext db = new TppContext();
-            db.Transition.Remove(db.Transition.Find(id));
+            db.Transitions.Remove(db.Transitions.Find(id));
             db.SaveChanges();
             return RedirectToAction("TransitionList");
         }
@@ -112,7 +113,7 @@ namespace SP_MVC.Controllers
         public ActionResult AddTransition(Transition transition)
         {
             TppContext db = new TppContext();
-            db.Transition.Add(transition);
+            db.Transitions.Add(transition);
             db.SaveChanges();
             return RedirectToAction("TransitionList");
         }
@@ -120,14 +121,14 @@ namespace SP_MVC.Controllers
         public ActionResult OperationList()
         {
             TppContext db = new TppContext();
-            IEnumerable<Operation> model = db.Operation;
+            IEnumerable<Operation> model = db.Operations;
             return View(model);
         }
 
         public ActionResult DeleteOperation(int id)
         {
             TppContext db = new TppContext();
-            db.Operation.Remove(db.Operation.Find(id));
+            db.Operations.Remove(db.Operations.Find(id));
             db.SaveChanges();
             return RedirectToAction("OperationList");
         }
@@ -143,13 +144,14 @@ namespace SP_MVC.Controllers
         public ActionResult AddOperation(OperationViewModel model)
         {
             TppContext db = new TppContext();
-            Transition trans = db.Transition.Find(model.operation.TransitionId);
+            Transition trans = db.Transitions.Find(model.operation.TransitionId);
             model.operation.Transition = trans;
-            Equipment eq = db.Equipment.Find(model.operation.EquipmentId);
+            Equipment eq = db.Equipments.Find(model.operation.EquipmentId);
             model.operation.Equipment = eq;
-            Rigging rig = db.Rigging.Find(model.operation.RiggingId);
-            model.operation.Rigging = rig;
-            db.Operation.Add(model.operation);
+            Rigging rig = db.Riggings.Find(model.operation.RiggingId);
+            //model.operation.Rigging = rig;
+            //TODO сделать множественное заполнение
+            db.Operations.Add(model.operation);
             db.SaveChanges();
             return RedirectToAction("OperationList");
         }
@@ -157,7 +159,7 @@ namespace SP_MVC.Controllers
         public ActionResult TechnologicalProcessesList()
         {
             TppContext db = new TppContext();
-            IEnumerable<TechnologicalProcesses> model = db.TechnologicalProcesses;
+            IEnumerable<TechnologicalProcess> model = db.TechnologicalProcesses;
             return View(model);
         }
 
@@ -174,10 +176,12 @@ namespace SP_MVC.Controllers
         public ActionResult AddTechnologicalProcesses(TechnologicalProcessesViewModel model)
         {
             TppContext db = new TppContext();
-            Material mat = db.Material.Find(model.tp.MaterialId);
+            Material mat = db.Materials.Find(model.tp.MaterialId);
             model.tp.Material = mat;
-            Operation oper = db.Operation.Find(model.tp.OperationId);
-            model.tp.Operation = oper;
+            ///Operation oper = db.Operations.Find(model.tp.o);
+            //model.tp.Operation = oper;
+            //TODO
+            //сделать множественное заполнение
             db.TechnologicalProcesses.Add(model.tp);
             db.SaveChanges();
             return RedirectToAction("TechnologicalProcessesList");
@@ -186,14 +190,14 @@ namespace SP_MVC.Controllers
         public ActionResult RouteList()
         {
             TppContext db = new TppContext();
-            IEnumerable<Route> model = db.Route;
+            IEnumerable<Route> model = db.Routes;
             return View(model);
         }
 
         public ActionResult DeleteRoute(int id)
         {
             TppContext db = new TppContext();
-            db.Route.Remove(db.Route.Find(id));
+            db.Routes.Remove(db.Routes.Find(id));
             db.SaveChanges();
             return RedirectToAction("RouteList");
         }
@@ -202,9 +206,10 @@ namespace SP_MVC.Controllers
         public ActionResult AddRoute(RouteViewModel model)
         {
             TppContext db = new TppContext();
-            TechnologicalProcesses tp = db.TechnologicalProcesses.Find(model.route.TechProcId);
-            model.route.TechnologicalProcesses = tp;
-            db.Route.Add(model.route);
+            TechnologicalProcess tp = db.TechnologicalProcesses.Find(model.route.TechProcId);
+            //TODO
+            //model.route.TechnologicalProcesses = tp;
+            db.Routes.Add(model.route);
             db.SaveChanges();
             return RedirectToAction("RouteList");
         }
@@ -212,7 +217,7 @@ namespace SP_MVC.Controllers
         public ActionResult RouteCardList()
         {
             TppContext db = new TppContext();
-            IEnumerable<RouteCar> model = db.RouteCar;
+            IEnumerable<RouteCar> model = db.RouteCars;
             List<RouteCarTableViewModel> model2 = new List<RouteCarTableViewModel>();
             foreach( var  item  in model)
             {
@@ -224,7 +229,7 @@ namespace SP_MVC.Controllers
         public ActionResult DeleteRouteCard(int id)
         {
             TppContext db = new TppContext();
-            db.RouteCar.Remove(db.RouteCar.Find(id));
+            db.RouteCars.Remove(db.RouteCars.Find(id));
             db.SaveChanges();
             return RedirectToAction("RouteCardList");
         }
@@ -240,12 +245,12 @@ namespace SP_MVC.Controllers
         public ActionResult AddRouteCard(RouteCardViewModel model)
         {
             TppContext db = new TppContext();
-            Route route = db.Route.Find(model.rc.RouteId);
+            Route route = db.Routes.Find(model.rc.RouteId);
             model.rc.Route = route;
 
             //users dont should be converted to objects
 
-            db.RouteCar.Add(model.rc);
+            db.RouteCars.Add(model.rc);
             db.SaveChanges();
             return RedirectToAction("RouteCardList");
         }

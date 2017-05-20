@@ -1,4 +1,4 @@
-namespace SP_MVC
+namespace SP_MVC.Models.ModelToData
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace SP_MVC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Equipment()
         {
-            Operation = new HashSet<Operation>();
+            Operations = new HashSet<Operation>();
         }
 
         public int EquipmentId { get; set; }
@@ -26,6 +26,6 @@ namespace SP_MVC
         public string Department { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operation> Operation { get; set; }
+        public virtual ICollection<Operation> Operations { get; set; }
     }
 }

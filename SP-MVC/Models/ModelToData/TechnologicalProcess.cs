@@ -1,4 +1,4 @@
-namespace SP_MVC
+namespace SP_MVC.Models.ModelToData
 {
     using System;
     using System.Collections.Generic;
@@ -7,20 +7,19 @@ namespace SP_MVC
     using System.Data.Entity.Spatial;
 
     [Table("TechProcProd.TechnologicalProcesses")]
-    public partial class TechnologicalProcesses
+    public partial class TechnologicalProcess
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TechnologicalProcesses()
+        public TechnologicalProcess()
         {
-            Route = new HashSet<Route>();
+            Routes = new HashSet<Route>();
+            Operations = new HashSet<Operation>();
         }
 
         [Key]
         public int TechProcId { get; set; }
 
         public string Name { get; set; }
-
-        public int OperationId { get; set; }
 
         public int MaterialId { get; set; }
 
@@ -33,9 +32,10 @@ namespace SP_MVC
 
         public virtual Material Material { get; set; }
 
-        public virtual Operation Operation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Route> Routes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Route> Route { get; set; }
+        public virtual ICollection<Operation> Operations { get; set; }
     }
 }

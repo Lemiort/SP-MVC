@@ -1,4 +1,4 @@
-namespace SP_MVC
+namespace SP_MVC.Models.ModelToData
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,8 @@ namespace SP_MVC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Operation()
         {
-            TechnologicalProcesses = new HashSet<TechnologicalProcesses>();
+            Riggings = new HashSet<Rigging>();
+            TechnologicalProcesses = new HashSet<TechnologicalProcess>();
         }
 
         public int OperationId { get; set; }
@@ -37,11 +38,12 @@ namespace SP_MVC
 
         public virtual Equipment Equipment { get; set; }
 
-        public virtual Rigging Rigging { get; set; }
-
         public virtual Transition Transition { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TechnologicalProcesses> TechnologicalProcesses { get; set; }
+        public virtual ICollection<Rigging> Riggings { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TechnologicalProcess> TechnologicalProcesses { get; set; }
     }
 }

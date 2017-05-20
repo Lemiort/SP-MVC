@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SP_MVC.Models.ModelToData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,7 +19,7 @@ namespace SP_MVC.Models
 
             TppContext bd = new TppContext();
             List<SelectListItem> temp = new List<SelectListItem>();
-            foreach (var route in bd.Route)
+            foreach (var route in bd.Routes)
             {
                 temp.Add(new SelectListItem()
                 {

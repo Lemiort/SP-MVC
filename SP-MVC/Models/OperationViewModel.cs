@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SP_MVC.Models.ModelToData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,7 +20,7 @@ namespace SP_MVC.Models
 
             TppContext bd = new TppContext();
             List<SelectListItem> temp = new List<SelectListItem>();
-            foreach(var eq in bd.Equipment)
+            foreach(var eq in bd.Equipments)
             {
                 temp.Add(new SelectListItem()
                 {
@@ -29,7 +30,7 @@ namespace SP_MVC.Models
             }
             equipmentList = temp;
             temp = new List<SelectListItem>();
-            foreach (var tr in bd.Transition)
+            foreach (var tr in bd.Transitions)
             {
                 temp.Add(new SelectListItem()
                 {
@@ -40,7 +41,7 @@ namespace SP_MVC.Models
             transitionList = temp;
 
             temp = new List<SelectListItem>();
-            foreach (var rig in bd.Rigging)
+            foreach (var rig in bd.Riggings)
             {
                 temp.Add(new SelectListItem()
                 {
