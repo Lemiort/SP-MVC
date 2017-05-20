@@ -32,8 +32,6 @@ namespace SP_MVC.Controllers
             TppContext db = new TppContext();
             db.Materials.Remove(db.Materials.Find(id));
             db.SaveChanges();
-            /*IEnumerable<Material> temp = db.Material;
-            return View("MaterialsList",temp);*/
             return RedirectToAction("MaterialsList");
         }
 
@@ -42,9 +40,6 @@ namespace SP_MVC.Controllers
             TppContext db = new TppContext();
             db.Materials.Add(material);
             db.SaveChanges();
-
-            /*IEnumerable<Material> temp = db.Material;
-            return View("MaterialsList", temp);*/
             return RedirectToAction("MaterialsList");
         }
 
@@ -133,12 +128,12 @@ namespace SP_MVC.Controllers
             return RedirectToAction("OperationList");
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public ActionResult AddOperation()
         {
             OperationViewModel model = new OperationViewModel();
             return View(model);
-        }*/
+        }
 
         [HttpPost]
         public ActionResult AddOperation(OperationViewModel model)
@@ -148,7 +143,7 @@ namespace SP_MVC.Controllers
             model.operation.Transition = trans;
             Equipment eq = db.Equipments.Find(model.operation.EquipmentId);
             model.operation.Equipment = eq;
-            Rigging rig = db.Riggings.Find(model.operation.RiggingId);
+            //Rigging rig = db.Riggings.Find(model.operation.RiggingId);
             //model.operation.Rigging = rig;
             //TODO сделать множественное заполнение
             db.Operations.Add(model.operation);

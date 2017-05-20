@@ -28,8 +28,6 @@ namespace SP_MVC.Models.ModelToData
 
         public int EquipmentId { get; set; }
 
-        public int RiggingId { get; set; }
-
         public int DepartmentNumber { get; set; }
 
         public int SiteNumber { get; set; }

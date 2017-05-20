@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SP_MVC.Equipment>
+﻿@model IEnumerable<SP_MVC.Models.ModelToData.Equipment >
 
 @{
     ViewBag.Title = "EquipmentList";
@@ -47,4 +47,4 @@
 }
 </table>
 
-@{Html.RenderPartial("AddEquipment", new SP_MVC.Equipment());}
+@{Html.RenderPartial("AddEquipment", new SP_MVC.Models.ModelToData.Equipment());}

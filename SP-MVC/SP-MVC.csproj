@@ -173,7 +173,7 @@
     <Compile Include="Models\ModelToData\Route.cs" />
     <Compile Include="Models\ModelToData\RouteCar.cs" />
     <Compile Include="Models\ModelToData\TechnologicalProcess.cs" />
-    <Compile Include="Models\ModelToData\Tpp.cs" />
+    <Compile Include="Models\ModelToData\TppContext.cs" />
     <Compile Include="Models\ModelToData\Transition.cs" />
     <Compile Include="Models\OperationViewModel.cs" />
     <Compile Include="Models\RouteCardViewModel.cs" />
@@ -239,6 +239,7 @@
     <Content Include="Views\Tpp\RouteList.cshtml" />
     <Content Include="Views\Tpp\AddRoute.cshtml" />
     <Content Include="Views\Tpp\AddRouteCard.cshtml" />
+    <Content Include="Views\Tpp\OperationList2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

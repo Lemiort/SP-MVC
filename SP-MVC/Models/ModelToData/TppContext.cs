@@ -8,7 +8,7 @@ namespace SP_MVC.Models.ModelToData
     public partial class TppContext : DbContext
     {
         public TppContext()
-            : base("name=Tpp")
+            : base("name=TppContext")
         {
         }
 

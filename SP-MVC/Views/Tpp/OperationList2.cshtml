@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<SP_MVC.Models.ModelToData.Operation>
 
 @{
-    ViewBag.Title = "OperaionList";
+    ViewBag.Title = "OperationList2";
 }
 
-<h2>OperaionList</h2>
+<h2>OperationList2</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Equipment.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Riggings)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Transition.Keyword)
@@ -44,13 +44,6 @@
             @Html.DisplayFor(modelItem => item.Equipment.Name)
         </td>
         <td>
-            @foreach( var rigging in item.Riggings)
-            {
-                @Html.DisplayFor(modelItem => rigging.Name)
-                <br />
-            }
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Transition.Keyword)
         </td>
         <td>
@@ -72,11 +65,11 @@
             @Html.DisplayFor(modelItem => item.WorkplaceNumber)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteOperation", new { id=item.OperationId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.OperationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OperationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OperationId })
         </td>
     </tr>
 }
 
 </table>
-
-@{Html.RenderPartial("AddOperation", new SP_MVC.Models.OperationViewModel());}
