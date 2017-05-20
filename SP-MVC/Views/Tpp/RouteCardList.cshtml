@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SP_MVC.RouteCar>
+﻿@model IEnumerable<SP_MVC.Models.RouteCarTableViewModel>
 
 @{
     ViewBag.Title = "RouteCardList";
@@ -15,19 +15,19 @@
             @Html.DisplayNameFor(model => model.CompanyName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Developer)
+            @Html.DisplayNameFor(model => model.DeveloperName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Checked)
+            @Html.DisplayNameFor(model => model.CheckedName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Agreed)
+            @Html.DisplayNameFor(model => model.AgreedName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Approved)
+            @Html.DisplayNameFor(model => model.ApprovedName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NormСontroller)
+            @Html.DisplayNameFor(model => model.NormСontrollerName)
         </th>
         <th></th>
     </tr>
@@ -41,19 +41,19 @@
             @Html.DisplayFor(modelItem => item.CompanyName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Developer)
+            @Html.DisplayFor(modelItem => item.DeveloperName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Checked)
+            @Html.DisplayFor(modelItem => item.CheckedName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Agreed)
+            @Html.DisplayFor(modelItem => item.AgreedName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Approved)
+            @Html.DisplayFor(modelItem => item.ApprovedName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NormСontroller)
+            @Html.DisplayFor(modelItem => item.NormСontrollerName)
         </td>
         <td>
             @Html.ActionLink("Delete", "DeleteRouteCard", new { id=item.RouteCarId })

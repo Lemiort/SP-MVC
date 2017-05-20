@@ -212,7 +212,12 @@ namespace SP_MVC.Controllers
         {
             TppContext db = new TppContext();
             IEnumerable<RouteCar> model = db.RouteCar;
-            return View(model);
+            List<RouteCarTableViewModel> model2 = new List<RouteCarTableViewModel>();
+            foreach( var  item  in model)
+            {
+                model2.Add(new RouteCarTableViewModel(item));
+            }
+            return View(model2);
         }
 
         public ActionResult DeleteRouteCard(int id)

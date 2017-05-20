@@ -9,6 +9,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.RouteId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TechnologicalProcesses.Name)
         </th>
         <th>
@@ -28,6 +31,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RouteId)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.TechnologicalProcesses.Name)
         </td>
