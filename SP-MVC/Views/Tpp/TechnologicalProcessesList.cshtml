@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SP_MVC.TechnologicalProcesses>
+
+@{
+    ViewBag.Title = "TechnologicalProcessesList";
+}
+
+<h2>TechnologicalProcessesList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Material.Assortment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Operation.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeByExecution)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateStartTechProc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material.Assortment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Operation.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeByExecution)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateStartTechProc)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteTechnologicalProcesses", new { id=item.TechProcId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@{Html.RenderPartial("AddTechnologicalProcesses", new SP_MVC.Models.TechnologicalProcessesViewModel());}

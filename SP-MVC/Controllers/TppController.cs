@@ -152,5 +152,34 @@ namespace SP_MVC.Controllers
             db.SaveChanges();
             return RedirectToAction("OperationList");
         }
+
+        public ActionResult TechnologicalProcessesList()
+        {
+            TppContext db = new TppContext();
+            IEnumerable<TechnologicalProcesses> model = db.TechnologicalProcesses;
+            return View(model);
+        }
+
+
+        public ActionResult DeleteTechnologicalProcesses(int id)
+        {
+            TppContext db = new TppContext();
+            db.TechnologicalProcesses.Remove(db.TechnologicalProcesses.Find(id));
+            db.SaveChanges();
+            return RedirectToAction("TechnologicalProcessesList");
+        }
+
+        [HttpPost]
+        public ActionResult AddTechnologicalProcesses(TechnologicalProcessesViewModel model)
+        {
+            TppContext db = new TppContext();
+            Material mat = db.Material.Find(model.tp.MaterialId);
+            model.tp.Material = mat;
+            Operation oper = db.Operation.Find(model.tp.OperationId);
+            model.tp.Operation = oper;
+            db.TechnologicalProcesses.Add(model.tp);
+            db.SaveChanges();
+            return RedirectToAction("TechnologicalProcessesList");
+        }
     }
 }
