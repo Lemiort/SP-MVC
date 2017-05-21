@@ -12,6 +12,7 @@ namespace SP_MVC.Models
         public TechnologicalProcess tp { get; set; }
         public IEnumerable<SelectListItem> materialList { get; set; }
         public IEnumerable<SelectListItem> operationList { get; set; }
+        public IEnumerable<string> selectedOperations { get; set; } 
 
         public TechnologicalProcessesViewModel()
         {

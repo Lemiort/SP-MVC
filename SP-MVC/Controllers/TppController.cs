@@ -149,9 +149,6 @@ namespace SP_MVC.Controllers
                 Rigging rig = db.Riggings.Find(int.Parse(item));
                 model.operation.Riggings.Add(rig);
             }
-            //Rigging rig = db.Riggings.Find(model.operation.RiggingId);
-            //model.operation.Rigging = rig;
-            //TODO сделать множественное заполнение
             db.Operations.Add(model.operation);
             db.SaveChanges();
             return RedirectToAction("OperationList");
@@ -173,16 +170,25 @@ namespace SP_MVC.Controllers
             return RedirectToAction("TechnologicalProcessesList");
         }
 
+        [HttpGet]
+        public ActionResult AddTechnologicalProcesses()
+        {
+            TechnologicalProcessesViewModel model = new TechnologicalProcessesViewModel();
+            return View(model);
+        }
+
         [HttpPost]
         public ActionResult AddTechnologicalProcesses(TechnologicalProcessesViewModel model)
         {
             TppContext db = new TppContext();
             Material mat = db.Materials.Find(model.tp.MaterialId);
             model.tp.Material = mat;
-            ///Operation oper = db.Operations.Find(model.tp.o);
-            //model.tp.Operation = oper;
-            //TODO
-            //сделать множественное заполнение
+
+            foreach( var item in model.selectedOperations)
+            {
+                Operation oper = db.Operations.Find(int.Parse(item));
+                model.tp.Operations.Add(oper );
+            }
             db.TechnologicalProcesses.Add(model.tp);
             db.SaveChanges();
             return RedirectToAction("TechnologicalProcessesList");
@@ -208,8 +214,7 @@ namespace SP_MVC.Controllers
         {
             TppContext db = new TppContext();
             TechnologicalProcess tp = db.TechnologicalProcesses.Find(model.route.TechProcId);
-            //TODO
-            //model.route.TechnologicalProcesses = tp;
+            model.route.TechnologicalProcess = tp;
             db.Routes.Add(model.route);
             db.SaveChanges();
             return RedirectToAction("RouteList");

@@ -12,7 +12,7 @@
             @Html.DisplayNameFor(model => model.Material.Assortment)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Operation.Name)
+            @Html.DisplayNameFor(model => model.Operations)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -35,7 +35,11 @@
             @Html.DisplayFor(modelItem => item.Material.Assortment)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Operation.Name)
+            @foreach (var oper in item.Operations)
+            {
+                @Html.DisplayFor(str => oper.Name)
+                <br />
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
