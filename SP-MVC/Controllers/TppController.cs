@@ -3,7 +3,9 @@ using SP_MVC.Models;
 using SP_MVC.Models.ModelToData;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -263,9 +265,47 @@ namespace SP_MVC.Controllers
 
         public ActionResult DownloadRouteCard(int id)
         {
-            var document = new XLWorkbook("C:\\Users\\Администратор.WIN-RNRNP8DOVU8\\Documents\\MK_-pustoy_shablon.xlsx");
-            document.SaveAs("mk.xlsx");
+            TppContext db = new TppContext();
+            RouteCar routeCar = db.RouteCars.Find(id);
+            RouteCarTableViewModel routeCarView = new RouteCarTableViewModel(routeCar);
 
+            SharepointContext sp = new SharepointContext();
+            var users = sp.GetUserCollection();
+
+
+            var document = new XLWorkbook("C:\\Users\\Администратор.WIN-RNRNP8DOVU8\\Documents\\MK_-pustoy_shablon.xlsx");
+            var ws = document.Worksheet(1);
+
+
+            //date
+            /*ws.Cell("AF8").Value = routeCar.Route.TechnologicalProcess.DateStartTechProc.ToShortDateString();
+            ws.Cell("AI9").Value = routeCar.Route.TechnologicalProcess.DateStartTechProc.ToShortDateString();
+            ws.Cell("AF12").Value = routeCar.Route.TechnologicalProcess.DateStartTechProc.ToShortDateString();*/
+            string str = String.Format("{0}.{1}.{2}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
+            ws.Cell("AF8").Value = str;
+            ws.Cell("AF9").Value = str;
+            ws.Cell("AF12").Value = str;
+
+            //developetr
+            ws.Cell("J8").Value = routeCarView.DeveloperName;
+            //checker
+            ws.Cell("J9").Value = routeCarView.CheckedName;
+            //norm contr
+            ws.Cell("J12").Value = routeCarView.NormСontrollerName;
+
+            //company name
+            ws.Cell("AL8").Value = routeCarView.CompanyName;
+
+            //detail descr
+            ws.Cell("BB8").Value = routeCar.Route.DetailsDesignation;
+
+            //detail name
+            ws.Cell("AR11").Value = routeCar.Route.DetailsName;
+
+            //mat name
+            //ws.Cell("F13").Value = routeCar.Route.;
+
+            document.SaveAs("mk.xlsx");
             string filename = "mk.xlsx";
             //string filepath = AppDomain.CurrentDomain.BaseDirectory + "/Path/To/File/" + filename;
             string filepath = filename;
