@@ -10,8 +10,9 @@ namespace SP_MVC.Models
     public class RouteCardViewModel
     {
         public RouteCar rc { get; set; }
-        public IEnumerable<SelectListItem> routesList { get; set; }
         public IEnumerable<SelectListItem> usersList { get; set; }
+        public IEnumerable<SelectListItem> routesList { get; set; }
+
 
         public RouteCardViewModel()
         {

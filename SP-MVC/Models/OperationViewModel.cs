@@ -13,6 +13,7 @@ namespace SP_MVC.Models
         public IEnumerable<SelectListItem> equipmentList { get; set; }
         public IEnumerable<SelectListItem> transitionList { get; set; }
         public IEnumerable<SelectListItem> riggingList { get; set; }
+        public IEnumerable<string> selectedRigging { get; set; }
 
         public OperationViewModel()
         {

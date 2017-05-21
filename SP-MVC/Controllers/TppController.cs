@@ -132,6 +132,7 @@ namespace SP_MVC.Controllers
         public ActionResult AddOperation()
         {
             OperationViewModel model = new OperationViewModel();
+            model.operation.Riggings = new List<Rigging>();
             return View(model);
         }
 
@@ -143,6 +144,11 @@ namespace SP_MVC.Controllers
             model.operation.Transition = trans;
             Equipment eq = db.Equipments.Find(model.operation.EquipmentId);
             model.operation.Equipment = eq;
+            foreach( var item in model.selectedRigging)
+            {
+                Rigging rig = db.Riggings.Find(int.Parse(item));
+                model.operation.Riggings.Add(rig);
+            }
             //Rigging rig = db.Riggings.Find(model.operation.RiggingId);
             //model.operation.Rigging = rig;
             //TODO сделать множественное заполнение
