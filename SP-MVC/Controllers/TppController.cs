@@ -272,8 +272,8 @@ namespace SP_MVC.Controllers
             SharepointContext sp = new SharepointContext();
             var users = sp.GetUserCollection();
 
-
-            var document = new XLWorkbook("C:\\Users\\Администратор.WIN-RNRNP8DOVU8\\Documents\\MK_-pustoy_shablon.xlsx");
+           
+            var document = new XLWorkbook(Server.MapPath("..\\..\\App_Data\\MK_-pustoy_shablon.xlsx"));
             var ws = document.Worksheet(1);
 
 
@@ -302,8 +302,44 @@ namespace SP_MVC.Controllers
             //detail name
             ws.Cell("AR11").Value = routeCar.Route.DetailsName;
 
+            //mat code
+            ws.Cell("F15").Value = routeCar.Route.TechnologicalProcess.MaterialId;
+
+            //mat qantity
+            //ws.Cell("CD15").Value = routeCar.Route.TechnologicalProcess.
+
             //mat name
-            //ws.Cell("F13").Value = routeCar.Route.;
+            //ws.Cell("F13").Value = routeCar.Route.TechnologicalProcess.
+            int operCounter = 0;
+            int strCounter = 0;
+            foreach (var oper in routeCar.Route.TechnologicalProcess.Operations)
+            {
+                ws.Cell(String.Format("A{0}", strCounter + 19)).Value = String.Format("А{0}", (strCounter + 3).ToString("D2"));
+                ws.Cell(String.Format("F{0}", strCounter + 19)).Value = String.Format("{0} {1} {2} {3} {4} {5}",
+                    oper.SiteNumber, //shop number
+                    oper.SiteNumber,
+                    oper.WorkplaceNumber,
+                    oper.Name,
+                    oper.OperationId,
+                    oper.Name
+                    );
+                strCounter++;
+                ws.Cell(String.Format("A{0}", strCounter + 19)).Value = String.Format("Б{0}", (strCounter + 3).ToString("D2"));
+                ws.Cell(String.Format("F{0}", strCounter + 19)).Value = String.Format("{0} {1}",
+                    oper.Equipment.EquipmentId,
+                    oper.Equipment.Name
+                    );
+                foreach (var rig in oper.Riggings)
+                {
+                    ws.Cell(String.Format("A{0}", strCounter + 19)).Value = String.Format("Т{0}", (strCounter + 3).ToString("D2"));
+                    ws.Cell(String.Format("F{0}", strCounter + 19)).Value = String.Format("{0} {1}",
+                       rig.RiggingId,
+                       rig.Name
+                       );
+                    strCounter++;
+                }
+                operCounter++;
+            }
 
             document.SaveAs("mk.xlsx");
             string filename = "mk.xlsx";
