@@ -316,7 +316,7 @@ namespace SP_MVC.Controllers
             {
                 ws.Cell(String.Format("A{0}", strCounter + 19)).Value = String.Format("А{0}", (strCounter + 3).ToString("D2"));
                 ws.Cell(String.Format("F{0}", strCounter + 19)).Value = String.Format("{0} {1} {2} {3} {4} {5}",
-                    oper.SiteNumber, //shop number
+                    oper.DepartmentNumber, //shop number
                     oper.SiteNumber,
                     oper.WorkplaceNumber,
                     oper.Name,
