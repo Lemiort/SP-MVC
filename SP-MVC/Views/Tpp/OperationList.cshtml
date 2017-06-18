@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SP_MVC.Models.ModelToData.Operation>
 
 @{
-    ViewBag.Title = "OperaionList";
+    ViewBag.Title = "Операции";
 }
 
-<h2>OperaionList</h2>
+<h2>Операции</h2>
 
 <table class="table">
     <tr>
@@ -72,7 +72,7 @@
             @Html.DisplayFor(modelItem => item.WorkplaceNumber)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteOperation", new { id=item.OperationId })
+            @Html.ActionLink("Удалить", "DeleteOperation", new { id=item.OperationId })
         </td>
     </tr>
 }

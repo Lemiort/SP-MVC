@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SP_MVC.Models.ModelToData.TechnologicalProcess>
 
 @{
-    ViewBag.Title = "TechnologicalProcessesList";
+    ViewBag.Title = "Технологические процессы";
 }
 
-<h2>TechnologicalProcessesList</h2>
+<h2>Технологические процессы</h2>
 
 <table class="table">
     <tr>
@@ -54,7 +54,7 @@
             @Html.DisplayFor(modelItem => item.DateStartTechProc)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteTechnologicalProcesses", new { id=item.TechProcId })
+            @Html.ActionLink("Удалить", "DeleteTechnologicalProcesses", new { id=item.TechProcId })
         </td>
     </tr>
 }

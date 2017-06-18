@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SP_MVC.Models.ModelToData.Transition>
 
 @{
-    ViewBag.Title = "TransitionList";
+    ViewBag.Title = "Переходы";
 }
 
-<h2>TransitionList</h2>
+<h2>Переходы</h2>
 
 <table class="table">
     <tr>
@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.TransitionType)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteTransition", new { id=item.TransitionId })
+            @Html.ActionLink("Удалить", "DeleteTransition", new { id=item.TransitionId })
         </td>
     </tr>
 }

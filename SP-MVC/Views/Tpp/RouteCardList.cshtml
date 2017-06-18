@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SP_MVC.Models.RouteCarTableViewModel>
 
 @{
-    ViewBag.Title = "RouteCardList";
+    ViewBag.Title = "Маршрутные карты";
 }
 
-<h2>RouteCardList</h2>
+<h2>Маршрутные карты</h2>
 
 <table class="table">
     <tr>
@@ -56,8 +56,8 @@
             @Html.DisplayFor(modelItem => item.NormСontrollerName)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteRouteCard", new { id=item.RouteCarId })|
-            @Html.ActionLink("Download", "DownloadRouteCard", new { id = item.RouteCarId })
+            @Html.ActionLink("Удалить", "DeleteRouteCard", new { id=item.RouteCarId })|
+            @Html.ActionLink("Скачать", "DownloadRouteCard", new { id = item.RouteCarId })
         </td>
     </tr>
 }

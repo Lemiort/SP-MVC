@@ -1,15 +1,12 @@
 ﻿@model SP_MVC.Models.ModelToData.Material
 
-@{
-    ViewBag.Title = "AddMaterial";
-}
+<h2>Добавить материал</h2>
 
 @using (Html.BeginForm("AddMaterial","Tpp",FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Material</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -52,7 +49,7 @@
     </div>
 }
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("На главную", "Index")
 </div>
 
 @section Scripts {

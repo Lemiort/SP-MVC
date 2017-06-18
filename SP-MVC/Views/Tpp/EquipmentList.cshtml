@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<SP_MVC.Models.ModelToData.Equipment >
 
 @{
-    ViewBag.Title = "EquipmentList";
+    ViewBag.Title = "Оборудование";
 }
 
-<h2>EquipmentList</h2>
+<h2>Оборудование</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -41,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Department)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteEquipment", new { id=item.EquipmentId })
+            @Html.ActionLink("Удалить", "DeleteEquipment", new { id=item.EquipmentId })
         </td>
     </tr>
 }

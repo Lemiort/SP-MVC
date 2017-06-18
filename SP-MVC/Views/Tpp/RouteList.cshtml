@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SP_MVC.Models.ModelToData.Route>
 
 @{
-    ViewBag.Title = "RouteList";
+    ViewBag.Title = "Маршруты";
 }
 
-<h2>RouteList</h2>
+<h2>Маршруты</h2>
 
 <table class="table">
     <tr>
@@ -50,7 +50,7 @@
             @Html.DisplayFor(modelItem => item.DetailsName)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteRoute", new { id=item.RouteId })
+            @Html.ActionLink("Удалить", "DeleteRoute", new { id=item.RouteId })
         </td>
     </tr>
 }

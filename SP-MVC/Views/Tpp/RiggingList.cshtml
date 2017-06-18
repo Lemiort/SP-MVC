@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SP_MVC.Models.ModelToData.Rigging>
 
 @{
-    ViewBag.Title = "RiggingList";
+    ViewBag.Title = "Оснастки";
 }
 
-<h2>RiggingList</h2>
+<h2>Оснастки</h2>
 
 <table class="table">
     <tr>
@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteRigging", new { id=item.RiggingId })
+            @Html.ActionLink("Удалить", "DeleteRigging", new { id=item.RiggingId })
         </td>
     </tr>
 }
